@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сервис услуг</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Сервис услуг</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('get_profile') }}">Профиль</a></li>
+                    <li><a href="{{ url_for('create') }}">Создать</a></li>
+                    <li><a href="{{ url_for('get_reg') }}">Регистрация</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Найдите нужную услугу быстро и удобно</h2>
+                <p>Мы предлагаем широкий спектр услуг от проверенных специалистов.</p>
+                <li class="cta-button"><a href="{{ url_for('get_uslugi') }}">Выбарать услугу</a></li>
+            </div>
+        </section>
+    </main>
+    
+    <main>
+        <div class="posts-container">
+            {% for post in posts %}
+                <div class="post-card">
+                    <h2 class="post-title">{{ post[1] }}</h2>  
+                    <p class="post-description">Описание: {{ post[2] }}</p> 
+                    <p class="post-price">Цена: {{ post[3] }} тг</p>
+    
+                
+                    {% if post[4] %}
+                        <img src="{{ post[4] }}" alt="Post photo" class="post-photo">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

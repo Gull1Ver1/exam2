@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uslugi.css') }}">
+</head>
+<body>
+
+    <div class="services-container">
+        <h1>Наши Услуги</h1>
+        <div class="service">
+            <h2>Создание постов</h2>
+            <p>Мы поможем вам создать качественные объявления для вашего бизнеса.</p>
+        </div>
+        <div class="service">
+            <h2>Редактирование контента</h2>
+            <p>Наши специалисты помогут вам улучшить описание товаров и услуг.</p>
+        </div>
+        <div class="service">
+            <h2>Консультации</h2>
+            <p>Получите профессиональную консультацию по созданию успешных объявлений.</p>
+        </div>
+        <a href="{{ url_for('get_base') }}" class="back-link">Вернуться на главную</a>
+    </div>
+    <main>
+        <div class="posts-container">
+            {% for post in posts %}
+                <div class="post-card">
+                    <h2 class="post-title">{{ post[1] }}</h2>  
+                    <p class="post-description">Описание: {{ post[2] }}</p> 
+                    <p class="post-price">Цена: {{ post[3] }} тг</p>
+                    {% if post[4] %}
+                        <img src="{{ post[4] }}" alt="Post photo" class="post-photo">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>
